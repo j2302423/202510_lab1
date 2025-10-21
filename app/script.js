@@ -77,13 +77,9 @@ function handleCellClick(e) {
         return;
     }
     
-    // 安全的 textContent 使用
-    statusDisplay.textContent = e.target.getAttribute('data-index');
-    
     makeMove(cellIndex, 'X');
     
     if (gameActive && currentPlayer === 'O') {
-        // 使用固定的延遲時間 (1000ms)
         setTimeout(() => computerMove(), 1000);
     }
 }
