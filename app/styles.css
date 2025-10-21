@@ -1,0 +1,31 @@
+// ...existing code...
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cell.x-mark {
+    color: #e74c3c;
+}
+
+.cell.o-mark {
+    color: #3498db;
+}
+
+.cell.winning {
+    background-color: #f1c40f;
+}
+
+.cell:hover:not(.taken) {
+    background-color: #eee;
+}
+
+// ...existing code...

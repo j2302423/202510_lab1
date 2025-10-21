@@ -94,7 +94,8 @@ function makeMove(index, player) {
     const cell = document.querySelector(`[data-index="${index}"]`);
     cell.textContent = player;
     cell.classList.add('taken');
-    cell.classList.add(player.toLowerCase());
+    // 使用小寫的 x 或 o 作為類別名稱
+    cell.classList.add(player === 'X' ? 'x-mark' : 'o-mark');
     
     checkResult();
     
@@ -292,7 +293,8 @@ function resetGame() {
     
     cells.forEach(cell => {
         cell.textContent = '';
-        cell.classList.remove('taken', 'x', 'o', 'winning');
+        // 移除所有標記相關的類別
+        cell.classList.remove('taken', 'x-mark', 'o-mark', 'winning');
     });
 }
 
