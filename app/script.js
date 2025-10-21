@@ -29,6 +29,19 @@ const playerScoreDisplay = document.getElementById('playerScore');
 const computerScoreDisplay = document.getElementById('computerScore');
 const drawScoreDisplay = document.getElementById('drawScore');
 
+// Cookie 操作函數
+function setCookie(name, value, days = 30) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+}
+
 // 初始化遊戲
 function init() {
     cells.forEach(cell => {
@@ -37,6 +50,16 @@ function init() {
     resetBtn.addEventListener('click', resetGame);
     resetScoreBtn.addEventListener('click', resetScore);
     difficultySelect.addEventListener('change', handleDifficultyChange);
+    
+    // 從 Cookie 讀取分數
+    const savedPlayerScore = getCookie('playerScore');
+    const savedComputerScore = getCookie('computerScore');
+    const savedDrawScore = getCookie('drawScore');
+    
+    if (savedPlayerScore) playerScore = parseInt(savedPlayerScore);
+    if (savedComputerScore) computerScore = parseInt(savedComputerScore);
+    if (savedDrawScore) drawScore = parseInt(savedDrawScore);
+    
     updateScoreDisplay();
 }
 
@@ -278,6 +301,12 @@ function resetScore() {
     playerScore = 0;
     computerScore = 0;
     drawScore = 0;
+    
+    // 清除 Cookie
+    setCookie('playerScore', 0);
+    setCookie('computerScore', 0);
+    setCookie('drawScore', 0);
+    
     updateScoreDisplay();
     resetGame();
 }
@@ -287,6 +316,11 @@ function updateScoreDisplay() {
     playerScoreDisplay.textContent = playerScore;
     computerScoreDisplay.textContent = computerScore;
     drawScoreDisplay.textContent = drawScore;
+    
+    // 將分數存入 Cookie
+    setCookie('playerScore', playerScore);
+    setCookie('computerScore', computerScore);
+    setCookie('drawScore', drawScore);
 }
 
 // 處理難度變更
