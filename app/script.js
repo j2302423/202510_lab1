@@ -60,10 +60,8 @@ function handleCellClick(e) {
     makeMove(cellIndex, 'X');
     
     if (gameActive && currentPlayer === 'O') {
-        const userInput = prompt("輸入延遲時間（毫秒）");
-        // 驗證並轉換使用者輸入
-        const delay = Math.min(Math.max(parseInt(userInput) || 1000, 100), 3000);
-        setTimeout(() => computerMove(), delay);
+        // 使用固定的延遲時間 (1000ms)
+        setTimeout(() => computerMove(), 1000);
     }
 }
 
