@@ -1,5 +1,21 @@
-// ...existing code...
+/* 遊戲容器 */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 500px;
+}
 
+/* 遊戲板 */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin: 20px 0;
+}
+
+/* 格子樣式 */
 .cell {
     width: 100px;
     height: 100px;
@@ -13,11 +29,11 @@
 }
 
 .cell.x-mark {
-    color: #e74c3c;
+    color: #2196f3;
 }
 
 .cell.o-mark {
-    color: #3498db;
+    color: #f44336;
 }
 
 .cell.winning {
@@ -28,4 +44,58 @@
     background-color: #eee;
 }
 
-// ...existing code...
+/* 狀態顯示 */
+#status {
+    font-size: 24px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+#status.winner {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+#status.draw {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+/* 分數顯示 */
+.score-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.score-item {
+    text-align: center;
+}
+
+/* 控制按鈕 */
+.controls {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
